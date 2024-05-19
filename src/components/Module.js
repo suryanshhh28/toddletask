@@ -42,7 +42,7 @@ const Module = ({
   return (
     <div
       ref={(node) => drag(drop(node))}
-      className={`module bg-white shadow-md rounded-md p-4 mb-4 transition-opacity duration-300 ${
+      className={`module bg-white shadow-md rounded-md p-4 mb-4 transition-opacity duration-300 w-[1000px] ${
         isDragging ? "opacity-50" : "opacity-100"
       }`}
     >

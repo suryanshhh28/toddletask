@@ -50,8 +50,9 @@ const Resource = ({ resource, moduleId, setModules }) => {
   return (
     <div
       ref={drag}
-      className="resource"
-      style={{ opacity: isDragging ? 0.5 : 1 }}
+      className={`resource p-4 border rounded-lg shadow-md flex items-center justify-between transition-opacity ${
+        isDragging ? "opacity-50" : "opacity-100"
+      }`}
     >
       {isEditing ? (
         <input
@@ -59,22 +60,41 @@ const Resource = ({ resource, moduleId, setModules }) => {
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
           onBlur={handleRename}
+          className="border-b-2 border-gray-300 focus:outline-none focus:border-blue-500"
         />
       ) : (
-        <p>
+        <p className="flex-1">
           {resource.type === "link" ? (
-            <a href={resource.url} target="_blank" rel="noopener noreferrer">
+            <a
+              href={resource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
               {resource.name}
             </a>
           ) : (
-            <a href={resource.file} target="_blank" rel="noopener noreferrer">
+            <a
+              href={resource.file}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
               {resource.name}
             </a>
           )}
         </p>
       )}
-      <FaEdit onClick={handleRename} />
-      <FaTrashAlt onClick={handleDelete} />
+      <div className="flex space-x-2">
+        <FaEdit
+          onClick={handleRename}
+          className="text-gray-500 cursor-pointer hover:text-gray-700"
+        />
+        <FaTrashAlt
+          onClick={handleDelete}
+          className="text-red-500 cursor-pointer hover:text-red-700"
+        />
+      </div>
     </div>
   );
 };

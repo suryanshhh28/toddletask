@@ -10,7 +10,7 @@ const ModuleList = ({
   moveModule,
 }) => {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center gap-2">
       {modules.map((module, index) => (
         <Module
           key={module.id}
